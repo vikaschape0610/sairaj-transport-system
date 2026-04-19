@@ -1,0 +1,78 @@
+# ─── ENVIRONMENT VARIABLES ────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── NODE MODULES ─────────────────────────────────────────
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# ─── BUILD OUTPUT ─────────────────────────────────────────
+dist/
+build/
+frontend/dist/
+.next/
+
+# ─── LOGS ─────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── UPLOADED FILES (Runtime generated) ───────────────────
+uploads/
+backend/uploads/
+public/uploads/
+
+# ─── DATABASE FILES ───────────────────────────────────────
+*.sql
+*.db
+*.sqlite
+# Allow the schema file — needed for Railway deployments
+!backend/database/*.sql
+
+# ─── CACHE & TEMP ─────────────────────────────────────────
+.cache/
+.tmp/
+.temp/
+.vite/
+
+# ─── OS FILES ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ─── EDITOR / IDE ─────────────────────────────────────────
+.idea/
+*.suo
+*.user
+*.sw?
+
+# ─── ROOT-LEVEL JUNK (auto-generated docs, reports, analysis) ─
+# These match both root-level files AND any subfolder
+TESTING_DOCUMENTATION.md
+TESTING_SUMMARY.md
+TESTING_TYPES_OVERVIEW.md
+API_TEST_REPORT.md
+FINAL_API_TEST_REPORT.md
+API_TEST_SUMMARY_CLEAR.md
+API_TEST_SUMMARY*.md
+PROJECT_ANALYSIS_COMPACT.md
+PROJECT_ANALYSIS_FOR_FIGMA.md
+PROJECT_ANALYSIS*.md
+**/TESTING_DOCUMENTATION.md
+**/TESTING_SUMMARY.md
+**/TESTING_TYPES_OVERVIEW.md
+**/API_TEST_REPORT.md
+**/FINAL_API_TEST_REPORT.md
+**/API_TEST_SUMMARY*.md
+**/PROJECT_ANALYSIS*.md
+backend/api-tests.js
+
+# ─── ROOT package.json / package-lock (not a monorepo workspace) ──
+# Comment out if you intentionally have a root-level package.json
+# package.json
+# package-lock.json

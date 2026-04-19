@@ -1,0 +1,12 @@
+{
+  "name": "transport-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd backend && npm run dev",
+    "start": "cd backend && npm start"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3"
+  }
+}
