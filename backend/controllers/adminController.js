@@ -481,7 +481,8 @@ const getUnassignedTrucks = async (req, res) => {
   try {
     const [rows] = await db.execute(`
       SELECT * FROM trucks
-      WHERE status = 'Available'
+      WHERE is_active = true
+      AND status = 'Available'
       AND id NOT IN (
         SELECT truck_id FROM bookings
         WHERE status IN ('Confirmed', 'In Transit')
@@ -501,7 +502,8 @@ const getAvailableDrivers = async (req, res) => {
   try {
     const [rows] = await db.execute(`
       SELECT * FROM drivers
-      WHERE id NOT IN (
+      WHERE is_active = true
+      AND id NOT IN (
         SELECT driver_id FROM bookings
         WHERE status IN ('Confirmed', 'In Transit')
         AND driver_id IS NOT NULL
