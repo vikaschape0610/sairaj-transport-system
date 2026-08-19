@@ -52,16 +52,17 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5001;
 
 // ── SOCKET.IO ────────────────────────────────────────────────
+const allowedOriginPattern = /^https:\/\/([a-z0-9-]+\.)?sairajroadlines\.in$|^https:\/\/[a-z0-9-]+-[a-z0-9]+\.vercel\.app$|^https:\/\/sairaj-transport-system(-[a-z0-9]+)*\.vercel\.app$|^http:\/\/(localhost|127\.0\.0\.1):[0-9]+$/;
+
 const io = new Server(server, {
   cors: {
-    origin: [
-      "https://sairajroadlines.in",
-      "https://www.sairajroadlines.in",
-      "https://sairaj-transport-system.vercel.app",
-      "http://localhost:3000",
-      "http://localhost:5001",
-      "http://localhost:5173",
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOriginPattern.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Socket CORS blocked: ${origin}`));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -96,23 +97,13 @@ app.use(
 );
 
 // ── CORS (FINAL FIXED) ───────────────────────────────────────
-const allowedOrigins = [
-  "https://sairajroadlines.in",
-  "https://www.sairajroadlines.in",
-  "https://sairaj-transport-system.vercel.app",
-  // Local development
-  "http://localhost:3000",
-  "http://localhost:5001",
-  "http://localhost:5173",
-  "http://localhost:4173",
-  "http://127.0.0.1:3000",
-  "http://127.0.0.1:5173",
-];
+// Allow: *.sairajroadlines.in, *.vercel.app, localhost:*
+const allowedOrigins = allowedOriginPattern;
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.test(origin)) {
         callback(null, true);
       } else {
         callback(new Error(`CORS: ${origin} not allowed`));
