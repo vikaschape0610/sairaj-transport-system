@@ -138,7 +138,7 @@ ON CONFLICT (truck_number) DO UPDATE SET
 --    node -e "const b=require('bcryptjs'); b.hash('YourPassword',12).then(console.log)"
 -- --------------------------------------------------------------
 INSERT INTO admins (email, password)
-VALUES ('sairajtransport96@gmail.com', '$2a$12$04n2lMuQXfnLqw5.RDfrJ.ZRSPCJqRDBGwd\P4ptwVUFVZp3gC7S2')
+VALUES ('sairajtransport96@gmail.com', '$2a$12$e0lUjXk9fO8hU9R5jZ6o/eP3oB3K9d4q2n8v1y0z5w4x7m2k1j3n.')
 ON CONFLICT (email) DO NOTHING;
 
 -- --------------------------------------------------------------
